@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My HTML test page showcasing projects, skills, and contact information.">
+    <meta name="keywords" content="projects, skills, portfolio, web development">
+    <title>My HTML Test Page 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Calibri, Arial, sans-serif;
+            font-size: 12px;
+            margin: 2cm;
+            padding: 1cm;
+            background-color: silver;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: radial-gradient(circle, #00008B 0%, #00008B 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 50px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: linear-gradient(135deg, #87CEEB 0%, #ADD8E6 100%);
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 0.5), inset -2px -2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a, nav button {
+            color: #00008B;
+            text-decoration: none;
+            margin: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background-color: white;
+            border: 2px solid #00008B;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 12px;
+        }
+
+        nav a:hover, nav button:hover {
+            background-color: #00008B;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #00008B;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            color: #00008B;
+            margin-bottom: 1rem;
+            font-size: 1.75rem;
+        }
+
+        section p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        /* About Me Section */
+        #about-me {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 105, 180, 0.1));
+            position: relative;
+            overflow: hidden;
+        }
+
+        #about-me::before {
+            content: "✨";
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            font-size: 2rem;
+            animation: sparkle 2s infinite;
+        }
+
+        #about-me::after {
+            content: "✨";
+            position: absolute;
+            bottom: 10%;
+            right: 10%;
+            font-size: 2rem;
+            animation: sparkle 2s infinite 0.5s;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .project-box {
+            background: white;
+            border: 2px solid #00008B;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        article {
+            margin-bottom: 1rem;
+        }
+
+        article h3 {
+            color: #00008B;
+            margin-bottom: 0.5rem;
+        }
+
+        figure {
+            background: linear-gradient(135deg, #FF6347, #DC143C);
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        figure:hover {
+            transform: scale(1.05);
+        }
+
+        figcaption {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Fire Icon Bullets */
+        ul, li {
+            list-style: none;
+            padding-left: 1.5rem;
+        }
+
+        ul li::before, li::before {
+            content: "🔥";
+            margin-right: 0.5rem;
+        }
+
+        ul li:hover::before, li:hover::before {
+            animation: bounce 0.5s;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Filter Styles */
+        .filter-buttons {
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            background-color: #87CEEB;
+            border: 2px solid #00008B;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background-color: #00008B;
+            color: white;
+        }
+
+        .filter-btn:hover {
+            background-color: #00008B;
+            color: white;
+        }
+
+        /* Contact Form */
+        #contact {
+            background-color: #f9f9f9;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        label {
+            font-weight: bold;
+            color: #00008B;
+            margin-bottom: 0.3rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            padding: 0.75rem;
+            border: 2px solid #00008B;
+            border-radius: 5px;
+            font-family: Calibri, Arial, sans-serif;
+            font-size: 12px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #FF6347;
+            box-shadow: 0 0 5px rgba(255, 99, 71, 0.5);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        button[type="submit"] {
+            padding: 0.75rem 1.5rem;
+            background-color: #00008B;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 12px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #FF6347;
+            transform: scale(1.05);
+        }
+
+        .error {
+            color: #FF6347;
+            font-size: 0.9rem;
+            margin-top: -0.8rem;
+        }
+
+        .success {
+            color: #228B22;
+            font-size: 0.9rem;
+            margin-top: -0.8rem;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: radial-gradient(circle, #00008B 0%, #00008B 100%);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 50px;
+            margin-top: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        footer a {
+            color: #FFD700;
+            text-decoration: none;
+            margin: 0 0.5rem;
+            transition: text-decoration 0.3s ease;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-btn {
+            color: #FF6347;
+            font-size: 2rem;
+            cursor: pointer;
+            float: right;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #00008B;
+        }
+
+        /* Responsive Images */
+        img, figure {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Accessibility */
+        a:focus, button:focus {
+            outline: 3px solid #FFD700;
+            outline-offset: 2px;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            body {
+                margin: 1cm;
+                padding: 0.5cm;
+            }
+
+            header h1 {
+                font-size: 1.75rem;
+            }
+
+            nav {
+                flex-direction: column;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            nav.active {
+                flex-direction: column;
+            }
+
+            nav a, nav button {
+                width: 100%;
+                text-align: center;
+            }
+
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-container {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            form {
+                gap: 0.75rem;
+            }
+
+            footer {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 11px;
+                margin: 0.5cm;
+                padding: 0.25cm;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            section {
+                padding: 1rem;
+            }
+
+            section h2 {
+                font-size: 1.25rem;
+            }
+
+            .filter-buttons {
+                flex-direction: column;
+            }
+
+            .filter-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>My HTML Test Page 1</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav role="navigation" id="navbar">
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <a href="#about-me" class="nav-link">About Me</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#footer" class="nav-link">Footer</a>
+    </nav>
+
+    <!-- About Me Section -->
+    <section id="about-me">
+        <h2>This is about creating html test page that works</h2>
+        <p>This page lists projects with articles, figures and skills.</p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Projects</h2>
+        
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="space">Space</button>
+            <button class="filter-btn" data-filter="ocean">Ocean</button>
+        </div>
+
+        <div class="projects-container">
+            <!-- Project A -->
+            <div class="project-box" data-category="space">
+                <article>
+                    <h3>Project A - SpaceX</h3>
+                    <p>Exploring space technology and innovation.</p>
+                </article>
+                <figure class="lightbox-trigger" data-image="code-red">
+                    Code Red
+                    <figcaption>Click to view</figcaption>
+                </figure>
+                <ul>
+                    <li>Active</li>
+                    <li>Open</li>
+                    <li>Agile</li>
+                </ul>
+            </div>
+
+            <!-- Project B -->
+            <div class="project-box" data-category="ocean">
+                <article>
+                    <h3>Project B - Atlantic</h3>
+                    <p>Deep ocean exploration and research.</p>
+                </article>
+                <figure class="lightbox-trigger" data-image="code-blue">
+                    Code Blue
+                    <figcaption>Click to view</figcaption>
+                </figure>
+                <ul>
+                    <li>Live</li>
+                    <li>Deep</li>
+                    <li>Sound</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form id="contactForm" novalidate>
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" required aria-required="true" aria-describedby="name-error">
+            <span id="name-error" class="error"></span>
+
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-error">
+            <span id="email-error" class="error"></span>
+
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone">
+
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" required aria-required="true" aria-describedby="message-error"></textarea>
+            <span id="message-error" class="error"></span>
+
+            <button type="submit">Send Message</button>
+            <span id="form-message"></span>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <p>&copy; 2024 My HTML Test Page. All rights reserved.</p>
+        <p>
+            <a href="#about-me">Back to Top</a> |
+            <a href="mailto:contact@example.com">Email Me</a>
+        </p>
+    </footer>
+
+    <!-- Modal for Lightbox -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeBtn">&times;</span>
+            <h3 id="modalTitle"></h3>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navbar = document.getElementById('navbar');
+
+        hamburger.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+            hamburger.setAttribute('aria-expanded', !isExpanded);
+            console.log('Hamburger menu toggled:', navbar.classList.contains('active'));
+        });
+
+        // Close menu when link is clicked
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navbar.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                console.log('Navigation link clicked, menu closed');
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    console.log('Smooth scroll to:', targetId);
+                }
+            });
+        });
+
+        // Project Filter
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectBoxes = document.querySelectorAll('.project-box');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filterValue = button.getAttribute('data-filter');
+                
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                projectBoxes.forEach(box => {
+                    if (filterValue === 'all' || box.getAttribute('data-category') === filterValue) {
+                        box.style.display = 'block';
+                        console.log('Showing project:', box.getAttribute('data-category'));
+                    } else {
+                        box.style.display = 'none';
+                        console.log('Hiding project:', box.getAttribute('data-category'));
+                    }
+                });
+            });
+        });
+
+        // Lightbox Modal
+        const modal = document.getElementById('imageModal');
+        const closeBtn = document.getElementById('closeBtn');
+        const lightboxTriggers = document.querySelectorAll('.lightbox-trigger');
+
+        const imageData = {
+            'code-red': {
+                title: 'Project A - Code Red',
+                description: 'SpaceX project visualization and code implementation.'
+            },
+            'code-blue': {
+                title: 'Project B - Code Blue',
+                description: 'Atlantic ocean exploration project visualization.'
+            }
+        };
+
+        lightboxTriggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const imageId = trigger.getAttribute('data-image');
+                const data = imageData[imageId];
+                
+                if (data) {
+                    document.getElementById('modalTitle').textContent = data.title;
+                    document.getElementById('modalDescription').textContent = data.description;
+                    modal.style.display = 'block';
+                    console.log('Lightbox opened for:', imageId);
+                }
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            console.log('Lightbox closed');
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                console.log('Lightbox closed by clicking outside');
+            }
+        });
+
+        // Form Validation
+        const contactForm = document.getElementById('contactForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+        const formMessage = document.getElementById('form-message');
+
+        const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+        const clearError = (inputId) => {
+            document.getElementById(inputId + '-error').textContent = '';
+            document.getElementById(inputId).style.borderColor = '#00008B';
+        };
+
+        const showError = (inputId, message) => {
+            document.getElementById(inputId + '-error').textContent = message;
+            document.getElementById(inputId).style.borderColor = '#FF6347';
+        };
+
+        // Real-time validation
+        nameInput.addEventListener('blur', () => {
+            if (nameInput.value.trim() === '') {
+                showError('name', 'Name is required');
+            } else {
+                clearError('name');
+            }
+        });
+
+        emailInput.addEventListener('blur', () => {
+            if (emailInput.value.trim() === '') {
+                showError('email', 'Email is required');
+            } else if (!validateEmail(emailInput.value)) {
+                showError('email', 'Please enter a valid email');
+            } else {
+                clearError('email');
+            }
+        });
+
+        messageInput.addEventListener('blur', () => {
+            if (messageInput.value.trim() === '') {
+                showError('message', 'Message is required');
+            } else {
+                clearError('message');
+            }
+        });
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            let isValid = true;
+
+            if (nameInput.value.trim() === '') {
+                showError('name', 'Name is required');
+                isValid = false;
+            } else {
+                clearError('name');
+            }
+
+            if (emailInput.value.trim() === '') {
+                showError('email', 'Email is required');
+                isValid = false;
+            } else if (!validateEmail(emailInput.value)) {
+                showError('email', 'Please enter a valid email');
+                isValid = false;
+            } else {
+                clearError('email');
+            }
+
+            if (messageInput.value.trim() === '') {
+                showError('message', 'Message is required');
+                isValid = false;
+            } else {
+                clearError('message');
+            }
+
+            if (!isValid) {
+                formMessage.textContent = 'All fields are required';
+                formMessage.className = 'error';
+                console.log('Form validation failed');
+                return;
+            }
+
+            formMessage.textContent = 'Message sent successfully!';
+            formMessage.className = 'success';
+            console.log('Form submitted successfully:', {
+                name: nameInput.value,
+                email: emailInput.value,
+                message: messageInput.value
+            });
+
+            contactForm.reset();
+            setTimeout(() => {
+                formMessage.textContent = '';
+            }, 3000);
+        });
+
+        console.log('Page loaded successfully - All functions initialized');
+    </script>
+</body>
+</html>
